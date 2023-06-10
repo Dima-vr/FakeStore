@@ -1,9 +1,19 @@
-<div *ngIf="products">
-    <h2>Product List</h2>
-    <ul>
-      <li *ngFor="let product of products">
-        {{ product.title }} - {{ product.price }}
-      </li>
-    </ul>
+<div>
+  <button (click)="showAllProducts()">Show All Products</button>
+  <button (click)="filterProductsByCategory('electronics')">Filter Electronics</button>
+  <button (click)="filterProductsByCategory('jewelery')">Filter Jewelery</button>
+  <button (click)="filterProductsByCategory('men\'s clothing')">Filter Men's Clothing</button>
+  <button (click)="filterProductsByCategory('women\'s clothing')">Filter Women's Clothing</button>
+  <button (click)="sortByPriceAscending()">Sort by Price Ascending</button>
+  <button (click)="sortByPriceDescending()">Sort by Price Descending</button>
+</div>
+
+<div class="product-container">
+  <div class="product" *ngFor="let product of filteredProducts">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Category: {{ product.category }}</p>
+    <img [src]="product.image" alt="{{ product.title }}" />
   </div>
-  
+</div>
